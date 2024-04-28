@@ -139,11 +139,11 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <p className="text-center font-medium my-6 text-sky-500 text-xl">Or</p>
+                    <p className="text-center font-medium mt-6 text-sky-500 text-xl">Or</p>
 
-                    <div className="flex justify-center gap-4">
-                        <p onClick={handleGoogleLogin} className="text-2xl"><FaGoogle></FaGoogle> </p>
-                        <p onClick={handleGithubLogin} className="text-2xl"><FaGithub></FaGithub></p>
+                    <div className="flex flex-col justify-center gap-4 p-8">
+                        <button onClick={handleGoogleLogin} className="text-2xl btn text-white bg-gradient-to-r from-cyan-500  to-rose-500"><FaGoogle></FaGoogle> <span className="text-lg">Login with Google</span> </button>
+                        <button onClick={handleGithubLogin} className="text-2xl btn text-white bg-gradient-to-r from-cyan-500  to-rose-500"><FaGithub></FaGithub> <span className="text-lg"> Login with Github</span></button>
                     </div>
 
                     <p className="text-center">

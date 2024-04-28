@@ -1,8 +1,32 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Tooltip } from "react-tooltip";
-
+import { AuthContext } from "../../Provider/AuthProvider";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+    const { user, logOut, setClickMenu, clickMenu } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(result => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Logout Successfull"
+                });
+                // toast.success("You have successfully logged in")
+                // console.log(result.user);
+            })
+            .catch(error => {
+                // setLoginError('Email and Password dose not match')
+                // toast.error('Email and Password dose not match')
+                // console.log(error.message);
+            })
+    }
+
+
+
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -14,7 +38,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-xl rounded-md mb-[50px]">
+        <div className="navbar bg-gradient-to-r from-cyan-500 to-lime-500 text-white shadow-xl rounded-md mb-[50px]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,15 +61,15 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            {/* <div className="navbar-end">
+            <div className="navbar-end">
                 {
                     user ? <div className="flex  items-center gap-3 md:gap-6 ">
                         <p className="text-xl font-medium md:font-semibold hidden md:flex">{user.displayName}</p>
-                        <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="h-14 w-14 rounded-full" src={user.photoURL} alt="" /> <div onClick={handleLogOut}><Link to='/login' className="btn text-white bg-gradient-to-r from-sky-500 to-indigo-500 border-none">LogOut</Link></div> </div> :
-                        <Link to='/login' className="btn border-none text-white bg-gradient-to-r from-sky-500 to-indigo-500">Login</Link>
+                        <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="h-14 w-14 rounded-full" src={user.photoURL} alt="" /> <div onClick={handleLogOut}><Link to='/login' className="btn text-white bg-gradient-to-r from-cyan-500  to-rose-500 border-none">LogOut</Link></div> </div> :
+                        <Link to='/login' className="btn border-none text-white bg-gradient-to-r from-cyan-500  to-rose-500">Login</Link>
                 }
                 <Tooltip id="my-tooltip" />
-            </div> */}
+            </div>
         </div>
     );
 };
