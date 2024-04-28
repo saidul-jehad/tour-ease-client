@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import 'react-tooltip/dist/react-tooltip.css'
@@ -6,6 +6,7 @@ import { Tooltip } from 'react-tooltip'
 import Swal from "sweetalert2";
 
 const Navbar = () => {
+
     const { user, logOut, setClickMenu, clickMenu } = useContext(AuthContext)
 
     const handleLogOut = () => {
@@ -38,7 +39,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-gradient-to-r from-cyan-500 to-lime-500 text-white shadow-xl rounded-md mb-[50px]">
+        <div className=" dark:bg-black navbar bg-gradient-to-r from-cyan-500 to-lime-500 text-white shadow-xl rounded-md mb-[50px]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,7 +61,6 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-
             <div className="navbar-end">
                 {
                     user ? <div className="flex  items-center gap-3 md:gap-6 ">
@@ -70,6 +70,9 @@ const Navbar = () => {
                 }
                 <Tooltip id="my-tooltip" />
             </div>
+
+
+
         </div>
     );
 };
