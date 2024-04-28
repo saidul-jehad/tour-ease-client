@@ -50,7 +50,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl"> <img className="h-8 w-7 rounded-sm" src="https://i.ibb.co/R6YPrTh/logo.jpg" alt="" />Resido House</a>
+                <a className="btn btn-ghost text-xl"> <img className="h-8 w-7 rounded-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtmsWEKsxNSTqVEgVc-409xD6r4pohz-2PpKy4G9DgjQSKLY2BhUKUUj6a9wX3hWa13fo&usqp=CAU" alt="" />Tour Ease</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
