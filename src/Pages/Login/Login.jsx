@@ -39,7 +39,7 @@ const Login = () => {
                     title: "Login Successfull"
                 });
                 // console.log(result.user);
-                // navigate(location?.state ? location.state : '/')
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 setLoginError('Email and Password dose not match')

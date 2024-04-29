@@ -4,7 +4,7 @@ import { LuEye, LuEyeOff } from "react-icons/lu";
 import 'react-toastify/dist/ReactToastify.css'
 
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Register = () => {
@@ -13,6 +13,9 @@ const Register = () => {
     const [passwordError, setPasswordError] = useState('')
     const [registerError, setRegisterError] = useState('')
     const [registerSuccess, setRegisterSuccess] = useState('')
+
+    const location = useLocation()
+    const navigate = useNavigate()
 
 
     const handleRegister = e => {
@@ -58,6 +61,7 @@ const Register = () => {
                     icon: "success",
                     title: "Account successfully created"
                 });
+                navigate(location?.state ? location.state : '/')
                 // console.log(result.user);
             })
             .catch(error => {
