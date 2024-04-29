@@ -31,11 +31,13 @@ const Navbar = () => {
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/updateProfile'>Update Profile</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
-        <li ><NavLink to='/register'>Register</NavLink></li>
-        {/* <li className={user && 'hidden'}><NavLink to='/login'>Login</NavLink></li>
-        <li className={user && 'hidden'}><NavLink to='/register'>Register</NavLink></li> */}
+        <li><NavLink to='/myList'>My List</NavLink></li>
+        <li ><NavLink to='/addTourists'>Add Tourists Spot</NavLink></li>
+        <li><NavLink to='/allTourists'>All Tourists Spot</NavLink></li>
+        <li className={user && 'hidden'}><NavLink to='/login'>Login</NavLink></li>
+        <li className={user && 'hidden'}><NavLink to='/register'>Register</NavLink></li>
+
+
     </>
 
     return (
