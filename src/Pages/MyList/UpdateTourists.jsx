@@ -1,9 +1,16 @@
-
+import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddTourists = () => {
+const UpdateTourists = () => {
 
-    const handleAddTourists = event => {
+    const loadedTouristsSpot = useLoaderData()
+    const { id } = useParams()
+
+
+    const { spotName, countryName, location, description, seasonality, averageCost, travelTime, totalVisitor, photoUrl } = loadedTouristsSpot
+
+
+    const handleUpdateTouristsSpot = event => {
         event.preventDefault()
         const form = event.target;
 
@@ -13,31 +20,28 @@ const AddTourists = () => {
         const description = form.description.value
         const travelTime = form.travelTime.value
         const totalVisitor = form.totalVisitor.value
-        const userName = form.userName.value
-        const userEmail = form.userEmail.value
         const photoUrl = form.photoUrl.value
 
         const averageCost = form.averageCost.value
         const seasonality = form.seasonality.value
 
-        const newTourists = { spotName, countryName, location, description, seasonality, averageCost, travelTime, totalVisitor, photoUrl,userEmail, userName }
-        console.log(newTourists);
+        const updateTouristsSpot = { spotName, countryName, location, description, seasonality, averageCost, travelTime, totalVisitor, photoUrl }
+        console.log(updateTouristsSpot);
 
         // send data to the server
-        fetch('https://tour-ease-server.vercel.app/tourists', {
-            method: 'POST',
+        fetch(`https://tour-ease-server.vercel.app/tourists/${id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newTourists)
+            body: JSON.stringify(updateTouristsSpot)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-
-                if (data.insertedId) {
+                if (data.modifiedCount) {
                     Swal.fire({
-                        title: ' Add Success!',
+                        title: ' update Success!',
                         icon: 'success'
                     })
                 }
@@ -46,22 +50,22 @@ const AddTourists = () => {
 
     }
 
-
     return (
         <div className="bg-lime-50 p-20 md:w-3/4 lg:w-1/2 mt-20 rounded-xl mx-auto">
 
-            <h3 className="text-3xl font-extrabold text-center  "> Add Tourist Spot</h3>
-            <form onSubmit={handleAddTourists} >
+            <h3 className="text-3xl font-extrabold text-center  "> Update Tourist Spot</h3>
+            <p>{ }</p>
+            <form onSubmit={handleUpdateTouristsSpot} >
 
                 {/* form tourists_spot_name and CountryName row */}
                 <div className="  mx-auto gap-6 md:flex">
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Tourists Spot Name</label>
-                        <input type="text" name="spotName" className="input input-bordered w-full" placeholder="Tourists Spot Name" required />
+                        <input type="text" name="spotName" className="input input-bordered w-full" defaultValue={spotName} required />
                     </div>
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Country Name </label>
-                        <input type="text" name="countryName" className="input input-bordered w-full" placeholder="Country Name " required />
+                        <input type="text" name="countryName" className="input input-bordered w-full" defaultValue={countryName} required />
 
                     </div>
                 </div>
@@ -70,11 +74,11 @@ const AddTourists = () => {
                 <div className="  mx-auto gap-6 md:flex mt-5">
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Average Cost</label>
-                        <input type="text" name="averageCost" className="input input-bordered w-full" placeholder=" Enter Average Cost" required />
+                        <input type="text" name="averageCost" className="input input-bordered w-full" defaultValue={averageCost} required />
                     </div>
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Seasonality</label>
-                        <input type="text" name="seasonality" className="input input-bordered w-full" placeholder="Enter Seasonality" required />
+                        <input type="text" name="seasonality" className="input input-bordered w-full" defaultValue={seasonality} required />
                     </div>
                 </div>
 
@@ -82,39 +86,28 @@ const AddTourists = () => {
                 <div className="  mx-auto gap-6 md:flex mt-5">
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Location</label>
-                        <input type="text" name="location" className="input input-bordered w-full" placeholder="Enter Location" required />
+                        <input type="text" name="location" className="input input-bordered w-full" defaultValue={location} required />
                     </div>
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Description</label>
-                        <input type="text" name="description" className="input input-bordered w-full" placeholder=" Enter Description" required />
+                        <input type="text" name="description" className="input input-bordered w-full" defaultValue={description} required />
                     </div>
                 </div>
-        
+
+
+
+
                 {/* form Travel Time  and Total Visitor Per Year  row */}
                 <div className="  mx-auto gap-6 md:flex mt-5">
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Travel Time</label>
-                        <input type="text" name="travelTime" className="input input-bordered w-full" placeholder="Enter Travel Time" required />
+                        <input type="text" name="travelTime" className="input input-bordered w-full" defaultValue={travelTime} required />
                     </div>
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Total Visitor Per Year</label>
-                        <input type="text" name="totalVisitor" className="input input-bordered w-full" placeholder=" Enter Total Visitor Per Year" required />
+                        <input type="text" name="totalVisitor" className="input input-bordered w-full" defaultValue={totalVisitor} required />
                     </div>
                 </div>
-
-                {/* form User Name  and User Email  row */}
-                <div className="  mx-auto gap-6 md:flex mt-5">
-                    <div className=" form-control mx-auto">
-                        <label htmlFor="">User Name</label>
-                        <input type="text" name="userName" className="input input-bordered w-full" placeholder="Enter User Name  " required />
-                    </div>
-                    <div className=" form-control mx-auto">
-                        <label htmlFor="">User Email</label>
-                        <input type="text" name="userEmail" className="input input-bordered w-full" placeholder="Enter User Email" required />
-                    </div>
-                </div>
-
-
 
 
 
@@ -122,14 +115,14 @@ const AddTourists = () => {
                 <div className=" mt-5">
                     <div className=" form-control mx-auto">
                         <label htmlFor="">Photo URL</label>
-                        <input type="text" name="photoUrl" className="input input-bordered w-full" placeholder="Enter photoURL"required />
+                        <input type="text" name="photoUrl" className="input input-bordered w-full" defaultValue={photoUrl} required />
                     </div>
                 </div>
 
-                <input type="submit" value="Add Spot" className="btn btn-outline btn-secondary w-full bg-black mt-4" />
+                <input type="submit" value="Update Spot" className="btn btn-outline btn-secondary w-full bg-black mt-4" />
             </form>
         </div>
     );
 };
 
-export default AddTourists;
+export default UpdateTourists;

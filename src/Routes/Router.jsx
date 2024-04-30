@@ -8,10 +8,13 @@ import TouristsSpotDetails from "../Pages/Home/TouristsSpot/TouristsSpotDetails"
 import AllTouristsSpots from "../Pages/AllTouristsSpots/AllTouristsSpots";
 import ProtectedRoute from "./ProtectedRoute";
 import MyLists from "../Pages/MyList/MyLists";
+import ErrorElement from "../Pages/ErrorElement/ErrorElement";
+import UpdateTourists from "../Pages/MyList/UpdateTourists";
 
 const Router = createBrowserRouter([
     {
         path: '/',
+        errorElement: <ErrorElement></ErrorElement>,
         element: <Root></Root>,
         children: [
             {
@@ -32,17 +35,25 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/touristsSpotDetails/:id',
-                element: <TouristsSpotDetails></TouristsSpotDetails>,
-                loader: () => fetch('http://localhost:5000/tourists')
+                element: <ProtectedRoute><TouristsSpotDetails></TouristsSpotDetails></ProtectedRoute>,
+                loader: () => fetch('https://tour-ease-server.vercel.app/tourists')
             },
             {
                 path: '/allTourists',
                 element: <AllTouristsSpots></AllTouristsSpots>,
-                loader: () => fetch('http://localhost:5000/tourists')
+                loader: () => fetch('https://tour-ease-server.vercel.app/tourists')
             },
             {
                 path: '/myList',
-                element: <MyLists></MyLists>
+                element: <ProtectedRoute><MyLists></MyLists></ProtectedRoute>,
+                loader: () => fetch('https://tour-ease-server.vercel.app/tourists')
+
+            },
+            {
+                path: '/myList/update/:id',
+                element: <ProtectedRoute> <UpdateTourists></UpdateTourists></ProtectedRoute>,
+                loader: ({ params }) => fetch(`https://tour-ease-server.vercel.app/tourists/${params.id}`)
+
             }
 
 
