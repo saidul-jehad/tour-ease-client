@@ -1,8 +1,21 @@
-# React + Vite
+# Website Name : Tour Ease
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Site ] : https://6630f49d6e24410c2ccddd9c--assignment-10-tour-ease.netlify.app/
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## npm packege used
+
+- animate.css
+- react-icons
+- prop-types
+- react-toastify
+- react-tooltip
+- swiper
+
+
+## Features and Characteristics
+
+- animation
+- from handling
+- slider js
+- authentication
