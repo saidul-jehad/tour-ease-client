@@ -3,7 +3,7 @@ import TouristsSpot from "./TouristsSpot";
 
 
 const TouristsSpots = () => {
-    const [touristsSpots, setTouristsSpots] = useState([])
+    const [touristsSpots, setTouristsSpots, loading, setLoading] = useState([])
 
     useEffect(() => {
         fetch('https://tour-ease-server.vercel.app/tourists')

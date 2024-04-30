@@ -10,6 +10,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import MyLists from "../Pages/MyList/MyLists";
 import ErrorElement from "../Pages/ErrorElement/ErrorElement";
 import UpdateTourists from "../Pages/MyList/UpdateTourists";
+import CountryDetails from "../Pages/Home/Countries/CountryDetails";
 
 const Router = createBrowserRouter([
     {
@@ -54,8 +55,11 @@ const Router = createBrowserRouter([
                 element: <ProtectedRoute> <UpdateTourists></UpdateTourists></ProtectedRoute>,
                 loader: ({ params }) => fetch(`https://tour-ease-server.vercel.app/tourists/${params.id}`)
 
+            },
+            {
+                path: '/country/:id',
+                element: <CountryDetails></CountryDetails>
             }
-
 
         ]
     }

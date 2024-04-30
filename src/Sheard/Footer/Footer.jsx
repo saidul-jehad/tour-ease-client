@@ -7,19 +7,20 @@ const Footer = () => {
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <nav>
                     <h6 className="footer-title">Tour Ease</h6>
-                    <a className="link link-hover">Collins Street West, Victoria 8007, Australia.</a>
+                    <a className="link link-hover"> Mirpur, dhaka 8007, Bangladesh.</a>
                     <a className="link link-hover">+1 246-345-0695</a>
-                    <a className="link link-hover">info@residohouse.com</a>
+                    <a className="link link-hover">info@tourease.com</a>
                 </nav>
                 <nav>
                     <h6 className="footer-title">The Highlight</h6>
-                    <a className="link link-hover"> Apartment</a>
-                    <a className="link link-hover">My houses</a>
-                    <a className="link link-hover">condos</a>
-                    <a className="link link-hover">Villas</a>
+                    <a className="link link-hover"> Cox Bazar</a>
+                    <a className="link link-hover">Sent Martin</a>
+                    <a className="link link-hover">Bandarban</a>
+                    <a className="link link-hover">Sundarbans</a>
                 </nav>
                 <nav>
                     <h6 className="footer-title">Quick Links</h6>
+                    <Link className="link link-hover">Home</Link>
                     <a className="link link-hover">All Tourists Spot</a>
                     <a className="link link-hover">Add Tourists Spot</a>
                     <a className="link link-hover">My List</a>
